@@ -1,9 +1,7 @@
-import logo from "./logo.svg";
 import "./App.css";
 import { createGlobalStyle } from "styled-components";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Home from "./pages/Home";
-import Home2 from "./pages/Home2";
 import Result from "./pages/Result";
 const GlobalStyle = createGlobalStyle`
  *{
@@ -25,10 +23,6 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
-  },
-  {
-    path: "/Home2",
-    element: <Home2 />,
   },
   {
     path: "/Result",

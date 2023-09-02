@@ -2,8 +2,7 @@ import React from "react";
 import Title4 from "../assets/images/title4.png";
 import Ontology from "../assets/images/ontology.png";
 import styled from "styled-components";
-import { createEmbeddingContext } from "amazon-quicksight-embedding-sdk";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, animateScroll as scroll } from "react-scroll";
 import { FiArrowUp, FiAlignJustify } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
@@ -172,9 +171,10 @@ export default function Home() {
 
   // click handler----------------------------------------
   const clickHandler = () => {
+    const inputValueArray = inputValue.split(",").map((item) => item.trim());
     navigation("/Result", {
       state: {
-        parameter: inputValue,
+        parameter: inputValueArray,
       },
     });
   };

@@ -72,8 +72,7 @@ export default function Result() {
   );
 
   // dashboard params management -----------------
-  const [key, setKey] = useState();
-  const [value, setValue] = useState();
+  const [urlParameter, setUrlParameter] = useState([]);
 
   // input value management -----------------------------
   const [inputValue, setInputValue] = useState(""); // 입력 값 상태
@@ -85,20 +84,30 @@ export default function Result() {
 
   // click handler----------------------------------------
   const clickHandler = () => {
-    setParameter(inputValue);
+    const inputValueArray = inputValue.split(",").map((item) => item.trim());
+
+    setParameter(inputValueArray);
   };
 
   useEffect(() => {
-    console.log(parameter);
-    if (!isNaN(parameter)) {
-      setKey("routeNum");
-    } else if (parameter.endsWith("구")) {
-      setKey("borough");
-    } else {
-    }
-    setValue(parameter);
-  }, [parameter]);
+    const newUrlParameter = parameter
+      .map((data, index) => {
+        if (!isNaN(data)) {
+          return {
+            routeNum: data,
+          };
+        } else if (data.endsWith("구")) {
+          return {
+            borough: data,
+          };
+        } else {
+          return null;
+        }
+      })
+      .filter((item) => item !== null);
 
+    setUrlParameter(newUrlParameter);
+  }, [parameter]);
   return (
     <Body>
       <Header>
@@ -120,7 +129,11 @@ export default function Result() {
       <Dashboard
         width="100%"
         height={1000}
-        src={`https://ap-northeast-2.quicksight.aws.amazon.com/sn/embed/share/accounts/629515838455/dashboards/bd9fc5ca-5114-4445-bf27-a33d0eeb78a4?directory_alias=fiveworks#p.${key}=${value}`}
+        src={`https://ap-northeast-2.quicksight.aws.amazon.com/sn/embed/share/accounts/629515838455/dashboards/bd9fc5ca-5114-4445-bf27-a33d0eeb78a4?directory_alias=fiveworks#${urlParameter
+          .map((data, index) => {
+            return `p.${Object.keys(data)[0]}=${data[Object.keys(data)[0]]}`;
+          })
+          .join("&")}`}
       />
     </Body>
   );
