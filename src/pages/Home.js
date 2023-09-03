@@ -1,5 +1,7 @@
 import React from "react";
 import Title4 from "../assets/images/title4.png";
+import Title6 from "../assets/images/title6.png";
+import Title5 from "../assets/images/title5.png";
 import Ontology from "../assets/images/ontology.png";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
@@ -23,7 +25,7 @@ export const Container = styled.div`
   justify-content: center;
   overflow: hidden;
   @media (max-width: 360px) {
-    height: fit-content;
+    height: 50rem;
   }
 `;
 
@@ -42,6 +44,9 @@ export const Header = styled.div`
 
 export const HeaderImage = styled.img`
   height: 3rem;
+  @media (max-width: 360px) {
+    height: 2rem;
+  }
 `;
 
 export const Hamburger = styled(FiAlignJustify)`
@@ -57,13 +62,16 @@ export const Category = styled.div`
 export const Video = styled.video`
   width: 100%;
   height: auto;
+  @media (max-width: 360px) {
+    width: 400%;
+  }
 `;
 
 export const TitleImage = styled.img`
-  height: 18rem;
-  margin-bottom: 5rem;
+  height: 10rem;
+  margin-bottom: 2rem;
   @media (max-width: 360px) {
-    width: 30%;
+    height: 3rem;
     padding: 2rem;
   }
 `;
@@ -72,7 +80,7 @@ export const InputWrap = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 5rem;
+  margin-bottom: 10rem;
   @media (max-width: 360px) {
     margin-bottom: 2rem;
     width: 80%;
@@ -154,6 +162,14 @@ export const WrapSection = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
+export const Document = styled.div`
+  color: white;
+  @media (max-width: 360px) {
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+`;
 export default function Home() {
   //variable management----------------------------------
   const navigation = useNavigate();
@@ -205,7 +221,7 @@ export default function Home() {
             <Hamburger />
             {/* <Category>게임</Category> */}
           </Header>
-          <TitleImage src={Title4} />
+          <TitleImage src={Title6} />
           <InputWrap>
             <SearchInput
               value={inputValue} // 입력 값 상태를 입력란에 바인딩
@@ -214,6 +230,10 @@ export default function Home() {
             />
             <SearchButton onClick={clickHandler}>OK</SearchButton>
           </InputWrap>
+          <Document>
+            "BUS-WITCH를 통해 비용효율적으로 타겟팅을 선정하고 맞춤형 광고
+            서비스를 누려보세요."
+          </Document>
         </WrapSection>
       </Container>
       <Container>

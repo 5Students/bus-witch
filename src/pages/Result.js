@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import styled from "styled-components";
-import Title4 from "../assets/images/title4.png";
+import Title6 from "../assets/images/title6.png";
 import Ontology from "../assets/images/ontology.png";
 
 export const Body = styled.div`
@@ -19,11 +19,12 @@ export const Header = styled.div`
   box-sizing: border-box;
   padding: 1rem 2rem;
   justify-content: space-between;
+  align-items: center;
   background-color: #0a2533;
 `;
 
 export const TitleImage = styled.img`
-  height: 4rem;
+  height: 3rem;
 `;
 
 export const InputWrap = styled.div`
@@ -115,7 +116,7 @@ export default function Result() {
           onClick={() => {
             navigation("/");
           }}
-          src={Title4}
+          src={Title6}
         />
         <InputWrap>
           <SearchInput
@@ -128,7 +129,7 @@ export default function Result() {
       </Header>
       <Dashboard
         width="100%"
-        height={1000}
+        height={2500}
         src={`https://ap-northeast-2.quicksight.aws.amazon.com/sn/embed/share/accounts/629515838455/dashboards/bd9fc5ca-5114-4445-bf27-a33d0eeb78a4?directory_alias=fiveworks#${urlParameter
           .map((data, index) => {
             return `p.${Object.keys(data)[0]}=${data[Object.keys(data)[0]]}`;
